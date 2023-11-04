@@ -8,16 +8,16 @@
         /// <summary>
         /// The default value.
         /// </summary>
-        public const float DefaultValue = 60.0f;
+        public const int DefaultValue = 60;
 
         /// <summary>
         /// The maximum value.
         /// </summary>
-        public const float MaxValue = 360.0f;
+        public const int MaxValue = 179;
 
         /// <summary>
         /// The minimum value.
         /// </summary>
-        public const float MinValue = 1.0f;
+        public const int MinValue = 1;
     }
 }

@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="RootContainer" style="flex-grow: 1;">
+        <ui:VisualElement name="Fov" style="flex-grow: 0; flex-direction: row; flex-shrink: 0;">
+            <ui:Label tabindex="-1" text="FOV" parse-escape-sequences="true" display-tooltip-when-elided="true" name="FovLabel" />
+            <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="FovValue" style="width: 20px; height: auto;" />
+            <ui:Slider picking-mode="Ignore" name="Slider" style="flex-shrink: 0; flex-grow: 1;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

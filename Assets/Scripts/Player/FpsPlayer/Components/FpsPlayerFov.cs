@@ -1,6 +1,6 @@
-using System;
 using Koi.FpsPlayer.Player.FpsPlayer.Constants;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Koi.FpsPlayer.Player.FpsPlayer.Components
 {
@@ -14,13 +14,18 @@ namespace Koi.FpsPlayer.Player.FpsPlayer.Components
         /// </summary>
         [SerializeField]
         [Range(FovConstants.MinValue, FovConstants.MaxValue)]
-        private float defaultFov = FovConstants.DefaultValue;
+        private int defaultFov = FovConstants.DefaultValue;
 
         /// <summary>
         /// The camera used as player eyes.
         /// </summary>
         [SerializeField]
         private Camera eyes;
+
+        /// <summary>
+        /// The event emitted when the FOV changes.
+        /// </summary>
+        public readonly UnityEvent FOVChanges = new();
 
         private void Awake()
         {
@@ -41,9 +46,18 @@ namespace Koi.FpsPlayer.Player.FpsPlayer.Components
         /// </summary>
         /// <param name="fov">The new FOV of the player.</param>
         /// <returns>Current instance (fluent pattern).</returns>
-        public void SetFov(float fov)
+        public void SetFov(int fov)
         {
+            var oldValue = (int) eyes.fieldOfView;
+
             eyes.fieldOfView = Mathf.Clamp(fov, FovConstants.MinValue, FovConstants.MaxValue);
+
+            var newValue = (int) eyes.fieldOfView;
+
+            if (newValue != oldValue)
+            {
+                FOVChanges.Invoke();
+            }
         }
     }
 }
